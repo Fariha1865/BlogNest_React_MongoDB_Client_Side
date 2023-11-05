@@ -1,5 +1,6 @@
 import Banner from "./Banner";
-import FeaturedBlogs from "./Featured/FeaturedBlogs";
+import RecentBlogs from "./Featured/RecentBlogs";
+
 
 const Home = () => {
 
@@ -8,7 +9,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <FeaturedBlogs></FeaturedBlogs>
+            <RecentBlogs></RecentBlogs>
 
         </div>
     );

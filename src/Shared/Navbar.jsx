@@ -25,12 +25,12 @@ const NavigationBar = () => {
                             </div>
                             :
                             <div className="flex gap-5 items-center">
-                                <NavLink to="/login"><Button>Login</Button></NavLink>
+                                <NavLink to="/login"><Button color="info">Login</Button></NavLink>
                                 <NavLink to="/register"><Button>Register</Button></NavLink>
                             </div>
                     }
                 </div>
-                <Navbar.Toggle className="mr-20 mt-5"/>
+                <Navbar.Toggle/>
 
                 <Navbar.Collapse>
                     <NavLink to="/" active>

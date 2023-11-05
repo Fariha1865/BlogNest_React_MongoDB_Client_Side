@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/UseAxiosSecure";
-import FeaturedBlog from "./FeaturedBlog";
+import RecentBlog from "./RecentBlog";
 
-const FeaturedBlogs = () => {
+const RecentBlogs = () => {
 
     const axiosSecure = useAxiosSecure();
     const url = '/blogs'
@@ -20,14 +20,14 @@ const FeaturedBlogs = () => {
     if (isLoading) return 'Loading...'
     if (error) return 'An error has occurred: ' + error.message;
     blogs.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime));
-    const featuredBlogs = blogs.slice(0, 1);
+    const featuredBlogs = blogs.slice(0, 6);
     return (
         <div>
            {
-            featuredBlogs?.map(blog=><FeaturedBlog key={blog._id} blog={blog}></FeaturedBlog>)
+            featuredBlogs?.map(blog=><RecentBlog key={blog._id} blog={blog}></RecentBlog>)
            }
         </div>
     );
 };
 
-export default FeaturedBlogs;
+export default RecentBlogs;
