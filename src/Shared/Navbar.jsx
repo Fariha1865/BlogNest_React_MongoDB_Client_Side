@@ -4,6 +4,7 @@ import logo from "../assets/logo.png"
 import { Button, Navbar } from 'flowbite-react';
 import { AuthContext } from "../Providers/AuthProvider";
 import { NavLink } from "react-router-dom";
+import "./navbar.css"
 const NavigationBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
@@ -15,10 +16,6 @@ const NavigationBar = () => {
                     <img src={logo} alt="Flowbite React Logo" className="w-40 rounded-md" />
                 </Navbar.Brand>
                 <div className="flex md:order-2">
-
-
-                    {/* <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded /> */}
-
 
                     {
                         user ?
@@ -33,7 +30,7 @@ const NavigationBar = () => {
                             </div>
                     }
                 </div>
-                <Navbar.Toggle />
+                <Navbar.Toggle className="mr-20 mt-5"/>
 
                 <Navbar.Collapse>
                     <NavLink to="/" active>
