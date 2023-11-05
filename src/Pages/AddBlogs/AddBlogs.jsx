@@ -34,11 +34,11 @@ const AddBlogs = () => {
 
                 if (data.data.insertedId) {
                     Swal.fire(
-                        'Product Added!',
-                        'The product has been added in the website successfully',
+                        'Blog Added!',
+                        'The blog has been added in the website successfully',
                         'success',
                     )
-                    // form.reset();
+                    form.reset();
                 }
             })
     }
