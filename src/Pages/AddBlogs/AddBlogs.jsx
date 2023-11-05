@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import "../Home/home.css"
-
+import "./addBlog.css"
 const AddBlogs = () => {
 
     const { user } = useContext(AuthContext);
@@ -45,6 +45,7 @@ const AddBlogs = () => {
 
 
     return (
+        <div className="container">
         <div className="flex justify-center mt-20 p-5 md:p-0">
             <div className="form-container">
                 <form className="form" onSubmit={handleAddBlog}>
@@ -79,6 +80,7 @@ const AddBlogs = () => {
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     );
 };

@@ -33,14 +33,14 @@ const NavigationBar = () => {
                 <Navbar.Toggle/>
 
                 <Navbar.Collapse>
-                    <NavLink to="/" active>
+                    <NavLink to="/" className="mt-2">
                         Home
                     </NavLink>
                 
-                    <NavLink to="/addBlog">Add Blog</NavLink>
-                    <NavLink to="#">All Blogs</NavLink>
-                    <NavLink to="/blogUpdate/6547afdf9b7a5a8708226351">Featured Blogs</NavLink>
-                    <NavLink to="#">Wishlist</NavLink>
+                    <NavLink to="/addBlog" className="mt-2">Add Blog</NavLink>
+                    <NavLink to="/allBlogs" className="mt-2">All Blogs</NavLink>
+                    <NavLink to="/blogUpdate/6547afdf9b7a5a8708226351" className="mt-2">Featured Blogs</NavLink>
+                    <NavLink to="/wishlist" className="mt-2">Wishlist</NavLink>
                 </Navbar.Collapse>
             </Navbar>
         </div>
