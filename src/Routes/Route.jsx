@@ -11,6 +11,8 @@ import WishLists from "../Pages/Wishlist/WishLists";
 
 
 const router = createBrowserRouter([
+
+    
     {
         path: "/",
         element: <Root />,

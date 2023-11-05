@@ -6,7 +6,7 @@ import Wishlist from "./Wishlist";
 import "../Home/home.css"
 const WishLists = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user,setLoading } = useContext(AuthContext);
 
     const axiosSecure = useAxiosSecure();
     const url = `/userWishlist/${user?.email}`
@@ -21,7 +21,10 @@ const WishLists = () => {
         retry: 10,
     })
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) { 
+ 
+        return 'Loading...'
+    }
     if (error) return 'An error has occurred: ' + error.message;
 
     return (
