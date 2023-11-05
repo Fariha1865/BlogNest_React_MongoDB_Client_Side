@@ -3,7 +3,7 @@ import { useContext } from "react";
 import logo from "../assets/logo.png"
 import { Button, Navbar } from 'flowbite-react';
 import { AuthContext } from "../Providers/AuthProvider";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./navbar.css"
 const NavigationBar = () => {
 
@@ -25,8 +25,8 @@ const NavigationBar = () => {
                             </div>
                             :
                             <div className="flex gap-5 items-center">
-                                <NavLink to="/login"><Button color="info">Login</Button></NavLink>
-                                <NavLink to="/register"><Button>Register</Button></NavLink>
+                                <Link to="/login"><Button color="info">Login</Button></Link>
+                                <Link to="/register"><Button>Register</Button></Link>
                             </div>
                     }
                 </div>

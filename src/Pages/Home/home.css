@@ -150,7 +150,7 @@
   
 
 
-
+  @media (min-width: 1025px) {
   .button2 {
     position: relative;
     width: 420px;
@@ -203,6 +203,7 @@
   
   .button2:active::before {
     scale: 0.7;
+  }
   }
   
   

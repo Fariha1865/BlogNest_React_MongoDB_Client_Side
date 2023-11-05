@@ -24,10 +24,10 @@ const RecentBlogs = () => {
     return (
 
         <>
-            <div className="flex justify-center mt-32">
-            <h1 className='button2 text-2xl font-bold font-mono'>Recent Blogs</h1>
+            <div className="flex justify-center mt-16 md:mt-32">
+            <h1 className='button2 font-mono text-blue-700 shadow-lg shadow-blue-500 md:mt-40 lg:mt-0 text-4xl lg:text-2xl font-bold'>Recent Blogs</h1>
             </div>
-            <div className="mt-20 md:mt-60 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 max-w-6xl mx-auto">
+            <div className="mt-16 md:mt-10 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 max-w-6xl mx-auto">
                 {
                     featuredBlogs?.map(blog => <RecentBlog key={blog._id} blog={blog}></RecentBlog>)
                 }
