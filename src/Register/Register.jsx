@@ -10,14 +10,11 @@ import { AiFillGoogleCircle , AiFillEye, AiFillEyeInvisible} from "react-icons/a
 
 const successToast = (success) => {
 
-
-
     toast.success(success, {
         className: 'custom-toast',
         autoClose: 4000,
     })
 }
-
 
 const errorToast = (error) => {
 
