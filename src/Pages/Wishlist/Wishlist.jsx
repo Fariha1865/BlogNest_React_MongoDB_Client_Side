@@ -1,8 +1,41 @@
 import { Button, Card } from "flowbite-react";
 import PropTypes from 'prop-types';
+import useAxiosSecure from "../../hooks/UseAxiosSecure";
+import { confirmAlert } from "react-confirm-alert";
 
-const Wishlist = ({ wishlist }) => {
+const Wishlist = ({ wishlist,setWishList }) => {
     const { title, image, short, category } = wishlist;
+    const axiosSecure = useAxiosSecure();
+
+    const submit = () => {
+
+        {
+            confirmAlert({
+                title: 'Confirm Delete from Wishlist',
+                message: 'Are you sure to do this?',
+                buttons: [
+                    {
+                        label: 'Yes',
+                        onClick: () => handleDelete(),
+                    },
+                    {
+                        label: 'No',
+                     
+                    },
+                ],
+            })
+        }
+    }
+
+    const handleDelete = () =>{
+        const url = `/blog/${wishlist._id}`
+        axiosSecure.delete(url)
+        .then(res=>{
+            console.log(res.data)
+            setWishList();
+        })
+    }
+
     return (
         <div>
             <Card
@@ -19,7 +52,7 @@ const Wishlist = ({ wishlist }) => {
                     <h1><span className='font-bold'>Category: </span>{category}</h1>
                     <div className="flex flex-col gap-2 items-center">
                         <Button color="info">Details</Button>
-                        <Button>Delete</Button>
+                        <Button onClick={submit}>Delete</Button>
                     </div>
                 </div>
             </Card>
@@ -28,6 +61,7 @@ const Wishlist = ({ wishlist }) => {
 };
 
 Wishlist.propTypes={
-    wishlist: PropTypes.object.isRequired
+    wishlist: PropTypes.object.isRequired,
+    setWishList:PropTypes.func
 }
 export default Wishlist;

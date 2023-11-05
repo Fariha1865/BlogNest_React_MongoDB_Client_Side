@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
@@ -6,20 +6,27 @@ import Wishlist from "./Wishlist";
 import "../Home/home.css"
 const WishLists = () => {
 
-    const { user,setLoading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    const url = `/userWishlist/${user?.email}`
+    const [list,setList] = useState([])
+  
+    const setWishList = async () => {
+        const response = await axiosSecure.get(url);
+        
+        // console.log(response.data);
+        setList(response.data)
+        return response.data;
+
+    }
 
     const axiosSecure = useAxiosSecure();
-    const url = `/userWishlist/${user?.email}`
-    const { isLoading, error, data: wishlist } = useQuery({
+    const { isLoading, error } = useQuery({
         queryKey: ['blogs'],
-        queryFn: async () => {
-            const response = await axiosSecure.get(url);
-            // console.log(response.data);
-            return response.data;
-
-        },
+        queryFn: setWishList,
         retry: 10,
     })
+
+
 
     if (isLoading) { 
  
@@ -35,7 +42,7 @@ const WishLists = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 {
 
-                    wishlist.map(wishlist => <Wishlist key={wishlist._id} wishlist={wishlist}></Wishlist>)
+                    list.map(wishlist => <Wishlist key={wishlist._id} wishlist={wishlist} setWishList={setWishList}></Wishlist>)
                 }
             </div>
         </div>
