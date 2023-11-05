@@ -1,4 +1,4 @@
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
@@ -48,10 +48,10 @@ const EditBlogs = () => {
             .then(data => {
                 console.log(data.data)
 
-                if (data.data.insertedId) {
-                    swal.fire(
-                        'Product Added!',
-                        'The product has been added in the website successfully',
+                if (data.data.modifiedCount >0) {
+                    Swal.fire(
+                        'Blog Updated!',
+                        'The blog has been updated successfully',
                         'success',
                     )
                     // form.reset();
