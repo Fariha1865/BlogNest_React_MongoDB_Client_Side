@@ -6,12 +6,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { useNavigate } from 'react-router-dom';
 
 const RecentBlog = ({ blog }) => {
 
     const { title, image, short, category } = blog;
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const submit = () => {
 
@@ -51,6 +53,11 @@ const RecentBlog = ({ blog }) => {
                 }
             })
     }
+
+    const handleDetails =()=>{
+
+              navigate(`/blogDetails/${blog._id}`)
+    }
     return (
         <div>
             <Card
@@ -66,7 +73,7 @@ const RecentBlog = ({ blog }) => {
                 <div className='flex items-center justify-between'>
                     <h1><span className='font-bold'>Category: </span>{category}</h1>
                     <div className="flex flex-col gap-2 items-center">
-                        <Button color="info">Details</Button>
+                        <Button color="info" onClick={handleDetails}>Details</Button>
                         <Button onClick={submit}>Wishlist</Button>
                     </div>
                 </div>

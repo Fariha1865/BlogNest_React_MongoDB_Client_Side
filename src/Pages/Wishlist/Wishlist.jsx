@@ -42,10 +42,10 @@ const Wishlist = ({ wishlist,setWishList }) => {
                 className="rounded-md  bg-gray-100 shadow-lg shadow-slate-400 text-black transform hover:scale-105 transition duration-300 ease-in-out"
                 renderImage={() => <img src={image} alt="image 1" className='w-full h-40 rounded-md ' />}
             >
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white h-10">
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white h-10 mb-5">
                     {title}
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400 h-20 mt-5">
+                <p className="font-normal text-gray-700 dark:text-gray-400 h-20 mt-5 mb-5">
                     {short}
                 </p>
                 <div className='flex items-center justify-between'>

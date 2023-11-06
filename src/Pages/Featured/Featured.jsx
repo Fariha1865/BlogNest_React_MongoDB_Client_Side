@@ -8,7 +8,7 @@ import "./featured.css"
 import React, { useState } from "react";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "flowbite-react";
+
 
 const Featured = () => {
 
@@ -88,7 +88,7 @@ const Featured = () => {
         { label: "Blog Title", renderCell: (item) => <h1 title={item.title}>{item.title.split(' ', 3).join(' ')}{item.title.split(' ').length > 3 ? '...' : ''}</h1> },
         { label: "Blog Owner", renderCell: (item) => <div className="flex"><h1>{item.userName}</h1></div> },
         { label: "Blog Owner Image", renderCell: (item) => <div className="flex justify-center mr-10"><img src={item.userImage} className="w-10 h-10 rounded-full" /></div> },
-        { label: "Published Date", renderCell: () => <h1 className="bg-blue-500 p-2 w-20 rounded-md cursor-pointer text-white transform hover:scale-110 transition duration-300 ease-in-out">details</h1> },
+        { label: "Action", renderCell: () => <h1 className="bg-blue-500 p-2 w-20 rounded-md cursor-pointer text-white transform hover:scale-110 transition duration-300 ease-in-out">details</h1> },
     ];
 
 
