@@ -19,6 +19,7 @@ const WishLists = () => {
 
     }
 
+    
     const axiosSecure = useAxiosSecure();
     const { isLoading, error } = useQuery({
         queryKey: ['blogs'],
