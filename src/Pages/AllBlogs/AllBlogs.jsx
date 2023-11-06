@@ -1,4 +1,3 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import Blog from "./Blog";
 import { Select } from "flowbite-react";
@@ -12,14 +11,13 @@ const AllBlogs = () => {
 
     const axiosSecure = useAxiosSecure();
     const [selectedOption, setSelectedOption] = useState("");
-    const queryClient = useQueryClient();
-    const [allBlogs, setAllBlogs] = useState([])
+    const [allBlogs, setAllBlogs] = useState([]);
 
 
     const handleOptionSelect = (option) => {
 
-        queryClient.invalidateQueries('categoryBlogs');
         setSelectedOption(option);
+ 
 
     };
 
@@ -27,23 +25,9 @@ const AllBlogs = () => {
 
 
     const categoryUrl = `/categoryBlogs/${selectedOption}`;
+
     const url = '/blogs';
 
-    // const { isLoading, error } = useQuery({
-    //     queryKey: ['blogs'],
-    //     queryFn: async () => {
-
-
-    //         const response = await axiosSecure.get(url);
-    //         console.log(response.data);
-    //         setAllBlogs(response.data);
-    //         return response.data
-
-
-    //     },
-    //     retry: 10,
-
-    // })
     useEffect(() => {
 
         axiosSecure.get(url)
@@ -57,10 +41,19 @@ const AllBlogs = () => {
 
 
 
+
     const handleSearch = () => {
         const searchedTitle = document.getElementById('search').value;
         document.getElementById('search').value = "";
-        console.log(searchedTitle)
+        const searchedBlog = [];
+        const searched = allBlogs.find(blog => blog.title.includes(searchedTitle));
+        if (searched) {
+            searchedBlog.push(searched)
+        } else {
+            console.log("No Data")
+        }
+
+        setAllBlogs(searchedBlog)
 
     }
 
@@ -68,30 +61,31 @@ const AllBlogs = () => {
     useEffect(() => {
         axiosSecure.get(categoryUrl)
             .then(res => {
-                setAllBlogs(res.data);
-                console.log(res.data);
+                setAllBlogs(res?.data);
+                console.log(res?.data);
+            
             })
     }, [selectedOption, axiosSecure, categoryUrl]);
 
-    // if (isLoading) { return 'Loading...' }
-    // if (error) { return 'An error has occurred: ' + error.message; }
+
+    console.log(allBlogs)
 
     return (
 
 
         <div className="max-w-6xl mx-auto p-10">
             <div className="flex justify-center mb-20">
-                <h1 className='button2 font-mono text-blue-700 shadow-lg shadow-blue-500 text-4xl lg:text-2xl font-bold'>Get All Blogs Here</h1>
+                <h1 className='button2 font-mono text-blue-700 shadow-lg shadow-blue-500 text-4xl lg:text-2xl font-bold'>{(selectedOption === "" || selectedOption === "all") ? 'Get All Blogs Here' : `${selectedOption} Blogs`}</h1>
             </div>
 
             <div className="flex flex-col md:flex-row gap-10 md:gap-0 justify-between items-center mt-10 mb-20">
                 <Select className="button w-60 font-bold"
                     label="Select an option"
-                    dismissOnClick={false}
                     value={selectedOption}
                     onChange={(e) => handleOptionSelect(e.target.value)}
                 >
-                    <option value="">Filter By Category</option>
+                    <option value="placeholder" className="hidden">Filter By Category</option>
+                    <option value="all" className="font-bold" onClick={()=>handleOptionSelect("all")}>All</option>
                     <option value="general" className="font-bold">general</option>
                     <option value="sports" className="font-bold">sports</option>
                     <option value="science" className="font-bold">science</option>
@@ -115,7 +109,7 @@ const AllBlogs = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
-                    allBlogs.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
+                    allBlogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
 
                 }
             </div>
