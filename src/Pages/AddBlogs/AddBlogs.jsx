@@ -45,7 +45,7 @@ const AddBlogs = () => {
 
 
     return (
-        <div className="container mb-10">
+        <div className=" mb-10">
         <div className="flex justify-center mt-20 p-5 md:p-0">
             <div className="form-container">
                 <form className="form" onSubmit={handleAddBlog}>

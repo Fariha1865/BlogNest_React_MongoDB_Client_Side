@@ -75,7 +75,7 @@ const AllBlogs = () => {
 
         <div className="max-w-6xl mx-auto p-10">
             <div className="flex justify-center mb-20">
-                <h1 className='button2 font-mono text-blue-700 shadow-lg shadow-blue-500 text-4xl lg:text-2xl font-bold'>{(selectedOption === "" || selectedOption === "all") ? 'Get All Blogs Here' : `${selectedOption} Blogs`}</h1>
+                <h1 className='button2 font-mono text-blue-700 shadow-lg shadow-blue-500 text-4xl lg:text-2xl font-bold hover'>{(selectedOption === "" || selectedOption === "all") ? 'Get All Blogs Here' : `${selectedOption} Blogs`}</h1>
             </div>
 
             <div className="flex flex-col md:flex-row gap-10 md:gap-0 justify-between items-center mt-10 mb-20">
@@ -85,7 +85,7 @@ const AllBlogs = () => {
                     onChange={(e) => handleOptionSelect(e.target.value)}
                 >
                     <option value="placeholder" className="hidden">Filter By Category</option>
-                    <option value="all" className="font-bold" onClick={()=>handleOptionSelect("all")}>All</option>
+                    <option value="all" className="font-bold">All</option>
                     <option value="general" className="font-bold">general</option>
                     <option value="sports" className="font-bold">sports</option>
                     <option value="science" className="font-bold">science</option>

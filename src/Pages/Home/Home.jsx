@@ -1,5 +1,6 @@
 import Banner from "./Banner";
-import RecentBlogs from "./Featured/RecentBlogs";
+import RecentBlogs from "./Recent/RecentBlogs";
+
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <RecentBlogs></RecentBlogs>
+            
 
         </div>
     );
