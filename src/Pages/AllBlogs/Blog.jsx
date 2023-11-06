@@ -52,6 +52,7 @@ const Blog = ({ blog }) => {
     }
 
     return (
+        
         <div>
             <Card
                 className="rounded-md  bg-gray-100 shadow-lg shadow-slate-400 text-black transform hover:scale-105 transition duration-300 ease-in-out"
