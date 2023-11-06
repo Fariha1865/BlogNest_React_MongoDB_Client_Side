@@ -13,7 +13,7 @@ const NavigationBar = () => {
         <div>
             <Navbar fluid rounded className="bg-gradient-to-r from-sky-300 via-sky-400 to-tile-300">
                 <Navbar.Brand href="https://flowbite-react.com">
-                    <img src={logo} alt="Flowbite React Logo" className="w-40 rounded-md" />
+                    <img src={logo} alt="Flowbite React Logo" className="w-40 rounded-md shadow-lg" />
                 </Navbar.Brand>
                 <div className="flex md:order-2">
 

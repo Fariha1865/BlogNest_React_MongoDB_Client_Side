@@ -1,17 +1,16 @@
 import { Button, Card } from 'flowbite-react';
 import PropTypes from 'prop-types';
-import useAxiosSecure from "../../../hooks/UseAxiosSecure";
-import Swal from 'sweetalert2';
-import { useContext } from 'react';
-import { AuthContext } from '../../../Providers/AuthProvider';
+import useAxiosSecure from '../../hooks/UseAxiosSecure';
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
-const RecentBlog = ({ blog }) => {
+const Blog = ({ blog }) => {
 
     const { title, image, short, category } = blog;
-    const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
+    const {user} = useContext(AuthContext);
 
     const submit = () => {
 
@@ -26,7 +25,7 @@ const RecentBlog = ({ blog }) => {
                     },
                     {
                         label: 'No',
-                        // onClick: () => alert('Click No')
+                
                     },
                 ],
             })
@@ -51,6 +50,7 @@ const RecentBlog = ({ blog }) => {
                 }
             })
     }
+
     return (
         <div>
             <Card
@@ -75,7 +75,7 @@ const RecentBlog = ({ blog }) => {
     );
 };
 
-RecentBlog.propTypes = {
+Blog.propTypes = {
     blog: PropTypes.object.isRequired
 }
-export default RecentBlog;
+export default Blog;
