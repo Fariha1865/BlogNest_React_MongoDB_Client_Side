@@ -1,0 +1,17 @@
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    /* Define your mobile styles here */
+    .table-library-container {
+      overflow-x: auto; /* Enable horizontal scrolling for small screens */
+    }
+  
+    .table-library-table {
+      width: 100%; /* Make the table take up 100% of the container width */
+    }
+    
+    .table-library-th,
+    .table-library-td {
+      padding: 10px; /* Adjust padding to make content more readable on small screens */
+    }
+  }
+  

@@ -16,6 +16,8 @@ const AddBlogs = () => {
         const form = e.target;
 
         const userMail = user.email;
+        const userName = user.displayName;
+        const userImage = user.photoURL;
         const title = form.title.value;
         const image = form.image.value;
         const category = form.category.value;
@@ -24,7 +26,7 @@ const AddBlogs = () => {
         const { dateTime } = { dateTime: new Date() };
 
 
-        const blog = { userMail, title, image, category, short, long, dateTime };
+        const blog = { userMail,userName,userImage, title, image, category, short, long, dateTime };
         console.log(blog);
 
         const url = '/blogs';
