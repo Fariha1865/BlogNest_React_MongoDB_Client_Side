@@ -9,7 +9,8 @@ import React, { useState } from "react";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const Featured = () => {
@@ -76,7 +77,7 @@ const Featured = () => {
     const handleSearch = (event) => {
         setSearch(event.target.value);
     };
-    if (isLoading) return 'Loading...'
+    if (isLoading) {return <div className="m-20"><Skeleton count={10}/></div>}
     if (error) return 'An error has occurred: ' + error.message;
 
     sortedBlogs = {

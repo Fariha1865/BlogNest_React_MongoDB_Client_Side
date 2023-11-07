@@ -4,6 +4,8 @@ import { Select } from "flowbite-react";
 import { useEffect, useState } from "react";
 import "../Home/home.css"
 import "./blogs.css"
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const AllBlogs = () => {
 
@@ -109,7 +111,7 @@ const AllBlogs = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
-                    allBlogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
+                  allBlogs?.length>0 ?  allBlogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>) : <Skeleton count={10} />
 
                 }
             </div>

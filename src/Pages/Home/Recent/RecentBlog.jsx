@@ -8,6 +8,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useNavigate } from 'react-router-dom';
 
+
 const RecentBlog = ({ blog }) => {
 
     const { title, image, short, category } = blog;
@@ -60,6 +61,7 @@ const RecentBlog = ({ blog }) => {
     }
     return (
         <div>
+            
             <Card
                 className="rounded-md  bg-gray-100 shadow-lg shadow-slate-400 text-black transform hover:scale-105 transition duration-300 ease-in-out"
                 renderImage={() => <img src={image} alt="image 1" className='w-full h-40 rounded-md ' />}
