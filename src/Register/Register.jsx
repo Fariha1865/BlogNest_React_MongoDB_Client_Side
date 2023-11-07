@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './toast.css'
 import { GoogleAuthProvider, getAuth, signInWithPopup, updateProfile } from "firebase/auth";
 import app from "../../firebase.config";
-import { AiFillGoogleCircle , AiFillEye, AiFillEyeInvisible} from "react-icons/ai"
+import { AiFillGoogleCircle, AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
+import { AuthContext } from "../Providers/AuthProvider";
 
 const successToast = (success) => {
 
@@ -33,7 +33,7 @@ const Register = () => {
 
     const { createUser } = useContext(AuthContext)
     const auth = getAuth(app);
-    const { setUser,isDarkMode } = useContext(AuthContext);
+    const { setUser, isDarkMode } = useContext(AuthContext);
 
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, new GoogleAuthProvider())
@@ -76,7 +76,7 @@ const Register = () => {
 
 
 
-        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-]).{8,}$/.test(password)) {
+        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-])(?=.*\d).{6,}$/.test(password)) {
             errorToast("password must have: At-least one small letter, At-least one capital letter and At-least one digit")
             setErrorMessage(`password must have: At-least one small letter, At-least one capital letter and At-least one special character`);
             return;
@@ -108,11 +108,15 @@ const Register = () => {
 
 
                 successToast(`  You have successfully registered `)
-                
+
                 setTimeout(function () {
                     window.location.reload();
                 }, 2000);
 
+                setTimeout(function () {
+                    window.location.href="/";
+                }, 2000);
+                
             })
 
             .catch(error => {
@@ -125,7 +129,7 @@ const Register = () => {
 
     }
     return (
-        <div className={`${isDarkMode ? "bg-black":"bg-blue-100"}`}>
+        <div className={`${isDarkMode ? "bg-black" : "bg-blue-100"}`}>
             <ToastContainer className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 " />
             <div className="max-w-xl mx-auto py-20 px-5">
                 <div className="relative flex  flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg shadow-gray-200">

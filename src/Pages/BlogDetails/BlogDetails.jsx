@@ -38,11 +38,11 @@ const BlogDetails = () => {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="flex justify-center mt-5">
-                <h1 className='button2 font-mono text-blue-700 shadow-lg shadow-blue-500 md:mt-40 lg:mt-0 text-4xl lg:text-2xl font-bold text-center'>{blog?.title}</h1>
+                <h1 className='button2 font-mono text-blue-700 shadow-lg shadow-blue-500 md:mt-40 lg:mt-0 text-2xl lg:text-2xl font-bold text-center'>{blog?.title}</h1>
             </div>
             <div className="p-10">
-                <div className="flex justify-between gap-10 items-center w-[1024px">
-                    <div className="w-[4000px] h-[450px] rounded overflow-hidden shadow-lg shadow-blue-700 p-10 ml-20 mt-10">
+                <div className="flex flex-col lg:flex-row justify-between gap-10 items-center w-[1024px">
+                    <div className="lg:w-[4000px] h-[450px] rounded overflow-hidden shadow-lg shadow-blue-700 p-10 ml-20 mt-10">
                         <img className="w-full h-32" src={blog?.image} alt="Card Image" />
 
 

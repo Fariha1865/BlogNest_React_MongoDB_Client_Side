@@ -7,7 +7,7 @@ const Comment = ({ commentEach }) => {
     return (
         <div>
             
-                <div className="mb-10">
+                <div className="mb-10 w-20">
                     <div className="flex items-center">
                         <img className="w-12 h-12 rounded-full mr-4" src={userImage} alt="User Avatar" />
                         <div>

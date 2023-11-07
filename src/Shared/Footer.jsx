@@ -15,10 +15,10 @@ const PageFooter = () => {
                             className='w-40 h-14 rounded-e-md shadow-xl'
                         />
                         <Footer.LinkGroup className='text-black text-lg font-semibold'>
-                            <Footer.Link href="#">About</Footer.Link>
-                            <Footer.Link href="#">Privacy Policy</Footer.Link>
-                            <Footer.Link href="#">Licensing</Footer.Link>
-                            <Footer.Link href="#">Contact</Footer.Link>
+                            <Footer.Link href="#" className='mr-5'>About</Footer.Link>
+                            <Footer.Link href="#" className='mr-5'>Privacy Policy</Footer.Link>
+                            <Footer.Link href="#" className='mr-5'>Licensing</Footer.Link>
+                            <Footer.Link href="#" className='mr-5'>Contact</Footer.Link>
                         </Footer.LinkGroup>
                     </div>
                     <Footer.Divider />
