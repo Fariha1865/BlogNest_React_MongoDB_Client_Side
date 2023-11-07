@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import CommentBox from "./CommentBox";
+import { Button } from "flowbite-react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const BlogDetails = () => {
 
     const { id } = useParams();
+    const {user} = useContext(AuthContext);
     const [blog, setBlog] = useState([]);
     const axiosSecure = useAxiosSecure();
     const url = `/blog/${id}`;
@@ -68,6 +71,9 @@ const BlogDetails = () => {
 
 
                 </div>
+                {
+                    user?.email === blog?.userMail ? <div className="flex justify-end"><Link to={`/blogUpdate/${blog?._id}`}><Button className="w-52 h-20">Update Blog</Button></Link></div> : <div/>
+                }
 
             </div>
             <div className="mb-10">

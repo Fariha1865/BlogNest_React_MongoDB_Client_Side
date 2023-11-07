@@ -4,13 +4,15 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import "../Home/home.css"
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
 
 const EditBlogs = () => {
 
     const { user } = useContext(AuthContext);
+    const {id} = useParams();
     const axiosSecure = useAxiosSecure();
 
-    const url = '/blog/6547afdf9b7a5a8708226351'
+    const url = `/blog/${id}`
     const { isLoading, error, data: blog } = useQuery({
         queryKey: ['blog'],
         queryFn: async () => {
@@ -45,7 +47,7 @@ const EditBlogs = () => {
         const blog = { userMail,userName,userImage, title, image, category, short, long, dateTime };
         console.log(blog);
 
-        const url = `/blogUpdate/6547afdf9b7a5a8708226351`;
+        const url = `/blogUpdate/${id}`;
         axiosSecure.put(url, blog)
             .then(data => {
                 console.log(data.data)
