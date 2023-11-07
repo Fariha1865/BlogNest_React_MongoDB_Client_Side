@@ -5,12 +5,14 @@ import { confirmAlert } from 'react-confirm-alert';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = ({ blog }) => {
 
     const { title, image, short, category } = blog;
     const axiosSecure = useAxiosSecure();
     const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const submit = () => {
 
@@ -51,8 +53,13 @@ const Blog = ({ blog }) => {
             })
     }
 
+    const handleDetails =()=>{
+
+        navigate(`/blogDetails/${blog._id}`)
+}
+
     return (
-        
+
         <div>
             <Card
                 className="rounded-md  bg-gray-100 shadow-lg shadow-slate-400 text-black transform hover:scale-105 transition duration-300 ease-in-out"
@@ -67,7 +74,7 @@ const Blog = ({ blog }) => {
                 <div className='flex items-center justify-between'>
                     <h1><span className='font-bold'>Category: </span>{category}</h1>
                     <div className="flex flex-col gap-2 items-center">
-                        <Button color="info">Details</Button>
+                        <Button color="info" onClick={handleDetails}>Details</Button>
                         <Button onClick={submit}>Wishlist</Button>
                     </div>
                 </div>
