@@ -72,7 +72,7 @@ const RecentBlog = ({ blog }) => {
                 </p>
                 <div className='flex items-center justify-between'>
                     <h1><span className='font-bold'>Category: </span>{category}</h1>
-                    <div className="flex flex-col gap-2 items-center">
+                    <div className="flex flex-col gap-2 items-center mt-5">
                         <Button color="info" onClick={handleDetails}>Details</Button>
                         <Button onClick={submit}>Wishlist</Button>
                     </div>

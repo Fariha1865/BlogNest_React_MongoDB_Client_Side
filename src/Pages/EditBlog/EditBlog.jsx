@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 const EditBlogs = () => {
 
     const { user } = useContext(AuthContext);
-    const {id} = useParams();
+    const { id } = useParams();
     const axiosSecure = useAxiosSecure();
 
     const url = `/blog/${id}`
@@ -19,7 +19,7 @@ const EditBlogs = () => {
             const response = await axiosSecure.get(url);
             // console.log(response.data);
             return response.data[0];
-                
+
         },
         retry: 10,
     })
@@ -44,7 +44,7 @@ const EditBlogs = () => {
         const { dateTime } = { dateTime: new Date() };
 
 
-        const blog = { userMail,userName,userImage, title, image, category, short, long, dateTime };
+        const blog = { userMail, userName, userImage, title, image, category, short, long, dateTime };
         console.log(blog);
 
         const url = `/blogUpdate/${id}`;
@@ -52,7 +52,7 @@ const EditBlogs = () => {
             .then(data => {
                 console.log(data.data)
 
-                if (data.data.modifiedCount >0) {
+                if (data.data.modifiedCount > 0) {
                     Swal.fire(
                         'Blog Updated!',
                         'The blog has been updated successfully',
@@ -73,19 +73,28 @@ const EditBlogs = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
-                            <input required name="title" type="text" defaultValue={blog.title}/>
+                            <input required name="title" type="text" defaultValue={blog.title} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="image">Image URL</label>
-                            <input required name="image" type="text" defaultValue={blog.image}/>
+                            <input required name="image" type="text" defaultValue={blog.image} />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="category">Category</label>
-                            <input required name="category" type="text" defaultValue={blog.category}/>
+                        <div className="w-full flex flex-col mb-3">
+                            <label className="font-semibold text-gray-600 py-2">Category*</label>
+                            <select name="category" required="required" className="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full" id="integration_city_id">
+
+                                <option value="">Select</option>
+                                <option value="general">general</option>
+                                <option value="sports">sports</option>
+                                <option value="fashion">fashion</option>
+                                <option value="science">science</option>
+                                <option value="technology">technology</option>
+                            </select>
+
                         </div>
                         <div className="form-group">
                             <label htmlFor="category">Short Description</label>
-                            <input required name="short" type="text" defaultValue={blog.short}/>
+                            <input required name="short" type="text" defaultValue={blog.short} />
                         </div>
 
 

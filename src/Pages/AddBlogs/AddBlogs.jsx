@@ -26,7 +26,7 @@ const AddBlogs = () => {
         const { dateTime } = { dateTime: new Date() };
 
 
-        const blog = { userMail,userName,userImage, title, image, category, short, long, dateTime };
+        const blog = { userMail, userName, userImage, title, image, category, short, long, dateTime };
         console.log(blog);
 
         const url = '/blogs';
@@ -48,41 +48,51 @@ const AddBlogs = () => {
 
     return (
         <div className=" mb-10">
-        <div className="flex justify-center mt-20 p-5 md:p-0">
-            <div className="form-container">
-                <form className="form" onSubmit={handleAddBlog}>
+            <div className="flex justify-center mt-20 p-5 md:p-0">
+                <div className="form-container">
+                    <form className="form" onSubmit={handleAddBlog}>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                        <div className="form-group">
-                            <label htmlFor="title">Title</label>
-                            <input required name="title" type="text" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="image">Image URL</label>
-                            <input required name="image" type="text" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="category">Category</label>
-                            <input required name="category" type="text" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="category">Short Description</label>
-                            <input required name="short" type="text" />
-                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <div className="form-group">
+                                <label htmlFor="title">Title</label>
+                                <input required name="title" type="text" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="image">Image URL</label>
+                                <input required name="image" type="text" />
+                            </div>
+                            <div className="w-full flex flex-col mb-3">
+                                <label className="font-semibold text-gray-600 py-2">Category*</label>
+                                <select name="category" required="required" className="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full" id="integration_city_id">
+
+                                    <option value="">Select</option>
+                                    <option value="general">general</option>
+                                    <option value="sports">sports</option>
+                                    <option value="fashion">fashion</option>
+                                    <option value="science">science</option>
+                                    <option value="technology">technology</option>
+                                </select>
+                                
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="category">Short Description</label>
+                                <input required name="short" type="text" />
+                            </div>
 
 
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="textarea">Long Description</label>
-                        <textarea required rows="10" id="textarea2" name="long" className="mb-5"></textarea>
-                    </div>
-                    <div className="flex justify-center">
-                        {/* <input type="submit" value="Submit" className="button"/> */}
-                        <button className="button"><input type="submit" value="Submit" /></button>
-                    </div>
-                </form>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="textarea">Long Description</label>
+                            <textarea required rows="10" id="textarea2" name="long" className="mb-5"></textarea>
+                        </div>
+                        <div className="flex justify-center">
+                            {/* <input type="submit" value="Submit" className="button"/> */}
+                            <button className="button"><input type="submit" value="Submit" /></button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
     );
 };
