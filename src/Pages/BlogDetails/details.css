@@ -1,8 +1,8 @@
 .inputs-container {
     position: relative;
-  }
-  
-  .inputs {
+}
+
+.inputs {
     padding: 10px;
     height: 40px;
     border: 2px solid #0B2447;
@@ -13,14 +13,14 @@
     outline: none;
     box-shadow: 7px 7px 0px 0px #0B2447;
     transition: all 0.5s;
-  }
-  
-  .inputs:focus {
+}
+
+.inputs:focus {
     box-shadow: none;
     transition: all 0.5s;
-  }
-  
-  .label {
+}
+
+.label {
     position: absolute;
     top: 5px;
     right: 10px;
@@ -28,9 +28,9 @@
     transition: all 0.5s;
     transform: scale(0);
     z-index: -1;
-  }
-  
-  .inputs-container .topline {
+}
+
+.inputs-container .topline {
     position: absolute;
     content: "";
     background-color: #0B2447;
@@ -39,14 +39,14 @@
     left: 0;
     top: 0;
     transition: all 0.5s;
-  }
-  
-  .inputs-container input[type="text"]:focus ~ .topline {
+}
+
+.inputs-container input[type="text"]:focus~.topline {
     width: 35%;
     transition: all 0.5s;
-  }
-  
-  .inputs-container .underline {
+}
+
+.inputs-container .underline {
     position: absolute;
     background-color: #0B2447;
     width: 0%;
@@ -54,15 +54,16 @@
     right: 0;
     bottom: 0;
     transition: all 0.5s;
-  }
-  
-  .inputss-container input[type="text"]:focus ~ .underline {
+}
+
+.inputss-container input[type="text"]:focus~.underline {
     width: 100%;
     transition: all 0.5s;
-  }
-  
-  .inputs-container input[type="text"]:focus ~ .label {
+}
+
+.inputs-container input[type="text"]:focus~.label {
     top: -10px;
     transform: scale(1);
     transition: all 0.5s;
-  }
+}
+
