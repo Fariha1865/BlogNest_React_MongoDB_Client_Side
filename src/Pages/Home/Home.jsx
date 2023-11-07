@@ -27,8 +27,14 @@ const Home = () => {
                 )}
             </InView>}
 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ml4mQJjgX6g" frameBorder="0" allowfullscreen></iframe>
-<DrawerContact></DrawerContact>
+            <div className="flex flex-col md:flex-row items-center p-20 gap-5 my-20">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Ml4mQJjgX6g" frameBorder="0" allowfullscreen className="w-1/2"></iframe>
+
+
+                <h1 className="text-2xl font-bold">For more personalized tips<br/> and blog writing suggestions,<br></br>please contact us with your queries..</h1>
+                <DrawerContact></DrawerContact>
+
+            </div>
         </div>
     );
 };

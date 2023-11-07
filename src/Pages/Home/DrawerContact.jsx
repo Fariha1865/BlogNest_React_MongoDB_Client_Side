@@ -1,4 +1,5 @@
 import React from "react";
+import "./home.css"
 import {
   Drawer,
   Button,
@@ -7,15 +8,25 @@ import {
   Input,
   Textarea,
 } from "@material-tailwind/react";
+import Swal from "sweetalert2";
  
 function DrawerContact() {
   const [open, setOpen] = React.useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
  
+  const handleContact =()=>{
+       document.getElementById('email').value="";
+       document.getElementById('message').value="";
+       Swal.fire(
+        'Thanks for contacting us !',
+        'Will reach to you soon with better personalized suggestions',
+        'success',
+    )
+  }
   return (
     <React.Fragment>
-      <Button onClick={openDrawer}>Open Drawer</Button>
+      <Button onClick={openDrawer} className="jumping-button">Contact Us</Button>
      <Drawer open={open} onClose={closeDrawer}>
         <div className="flex items-center justify-between px-4 pb-2">
           <Typography variant="h5" color="blue-gray">
@@ -47,10 +58,9 @@ function DrawerContact() {
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Your Email
           </Typography>
-          <Input type="email" label="Email" />
-          <Input label="Subject" />
-          <Textarea rows={6} label="Message" />
-          <Button>Send Message</Button>
+          <Input type="email" label="Email" id="email"/>
+          <Textarea rows={6} label="Message" id="message"/>
+          <Button onClick={handleContact}>Send Message</Button>
         </form>
       </Drawer>
     </React.Fragment>
