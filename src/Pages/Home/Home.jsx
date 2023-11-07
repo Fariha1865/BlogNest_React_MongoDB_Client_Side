@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import NewsLetter from "./NewsLetter/NewsLetter";
 import RecentBlogs from "./Recent/RecentBlogs";
 import { motion } from 'framer-motion';
+import DrawerContact from "./DrawerContact";
 
 
 const Home = () => {
@@ -26,6 +27,8 @@ const Home = () => {
                 )}
             </InView>}
 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ml4mQJjgX6g" frameBorder="0" allowfullscreen></iframe>
+<DrawerContact></DrawerContact>
         </div>
     );
 };
