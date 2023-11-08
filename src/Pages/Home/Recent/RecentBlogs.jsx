@@ -6,6 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 import { InView } from "react-intersection-observer";
 import { motion } from 'framer-motion';
+import TopBlogWriters from "../TopBlogWriters/TopBlogWriters";
 
 const RecentBlogs = () => {
 
@@ -24,6 +25,52 @@ const RecentBlogs = () => {
 
     if (isLoading) { <Skeleton count={10} /> }
     if (error) return 'An error has occurred: ' + error.message;
+
+    let topUsers = blogs;
+    const userMailFrequency = {};
+
+    // Create an object to store user images
+    const userImages = {};
+    const userNames = {};
+
+    topUsers?.forEach((user) => {
+        const { userMail, userImage ,userName} = user;
+
+        // Store user images
+        userImages[userMail] = userImage;
+        userNames[userMail] = userName;
+
+        if (userMail in userMailFrequency) {
+            userMailFrequency[userMail]++;
+        } else {
+            userMailFrequency[userMail] = 1;
+        }
+    });
+
+    console.log(userMailFrequency);
+
+    // Sort userMail by frequency in descending order
+    const sortedUserMail = Object.keys(userMailFrequency).sort(
+        (a, b) => userMailFrequency[b] - userMailFrequency[a]
+    );
+
+    const totalUsers = topUsers?.length;
+
+    // Calculate the percentage of contribution for all users
+    let contributionPercentages = sortedUserMail?.map((userMail) => ({
+        userMail,
+        userImage: userImages[userMail], 
+        userName: userNames[userMail], 
+        frequency: userMailFrequency[userMail],
+        percentage: ((userMailFrequency[userMail] / totalUsers) * 100).toFixed(2),
+    }));
+
+    // Get the top 5 contributors
+    contributionPercentages = contributionPercentages.slice(0, 5);
+
+    console.log(contributionPercentages);
+
+
     blogs?.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime));
     const featuredBlogs = blogs?.slice(0, 6);
     return (
@@ -53,7 +100,7 @@ const RecentBlogs = () => {
 
             }
 
-
+            <TopBlogWriters contributionPercentages={contributionPercentages}></TopBlogWriters>
 
         </>
     );

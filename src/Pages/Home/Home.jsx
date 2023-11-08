@@ -29,7 +29,7 @@ const Home = () => {
             </InView>}
 
             <div className="mb-20 mt-32">
-            <Marquee pauseOnHover speed={70}>
+            <Marquee pauseOnHover speed={70} className="-z-0">
                 <p className="text-xl font-bold">For proper blog writing tips, Visit this documentation: <a href="https://www.shoutmeloud.com/blogging-tips.html" target="__blank" className="text-blue-800 underline">Blog Writing Tips</a> or Contact Us </p>
             </Marquee>
             <div className="flex flex-col md:flex-row items-center p-20 gap-5">
