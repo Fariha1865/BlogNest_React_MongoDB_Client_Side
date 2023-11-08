@@ -7,6 +7,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup, updateProfile } from "fir
 import app from "../../firebase.config";
 import { AiFillGoogleCircle, AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { AuthContext } from "../Providers/AuthProvider";
+import useAxiosSecure from "../hooks/UseAxiosSecure";
 
 const successToast = (success) => {
 
@@ -29,6 +30,7 @@ const Register = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [acceptedState, setAcceptedState] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const axiosSecure = useAxiosSecure();
 
 
     const { createUser } = useContext(AuthContext)
@@ -42,6 +44,18 @@ const Register = () => {
                 console.log('Google Sign-In Successful:', user);
                 setUser(user);
                 successToast(`  You have successfully registered `)
+
+                const url = '/jwt';
+                const loggedUser = {email: result.user?.email}
+                
+                axiosSecure.post(url,loggedUser,{withCredentials:true})
+                .then(res=>{
+                    
+                        console.log(res.data)
+                    
+                })
+
+
                 setTimeout(function () {
                     window.location.reload();
                 }, 2000);
@@ -112,6 +126,18 @@ const Register = () => {
                 setTimeout(function () {
                     window.location.reload();
                 }, 2000);
+
+                const url = '/jwt';
+                const loggedUser = {email: Result.user?.email}
+                
+                axiosSecure.post(url,loggedUser,{withCredentials:true})
+                .then(res=>{
+                    
+                        console.log(res.data)
+                    
+                })
+
+                
 
                 setTimeout(function () {
                     window.location.href="/";

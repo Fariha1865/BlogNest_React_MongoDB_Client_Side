@@ -6,6 +6,7 @@ import "../Home/home.css"
 import "./blogs.css"
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import Swal from "sweetalert2";
 
 const AllBlogs = () => {
 
@@ -48,11 +49,20 @@ const AllBlogs = () => {
         const searchedTitle = document.getElementById('search').value;
         document.getElementById('search').value = "";
         const searchedBlog = [];
-        const searched = allBlogs.find(blog => blog.title.includes(searchedTitle));
+        const searched = allBlogs.find(blog => blog?.title.toLowerCase().includes(searchedTitle.toLowerCase()));
         if (searched) {
             searchedBlog.push(searched)
         } else {
-            console.log("No Data")
+            console.log("No Data");
+            Swal.fire(
+                'No Blog Available with this Title',
+                'Sorry, Currently no blog with this title is available',
+                'error',
+            )
+            setTimeout(function () {
+                window.location.reload()
+            }, 2000);
+
         }
 
         setAllBlogs(searchedBlog)

@@ -7,10 +7,12 @@ import { AiFillGoogleCircle, AiFillEye, AiFillEyeInvisible } from "react-icons/a
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../Register/toast.css'
+import useAxiosSecure from "../hooks/UseAxiosSecure";
 
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false);
+    const axiosSecure =useAxiosSecure()
 
     const errorToast = (error) => {
 
@@ -27,7 +29,7 @@ const Login = () => {
         })
     }
 
-    const { signIn ,isDarkMode} = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const handleSignInFormSubmit = e => {
@@ -35,6 +37,7 @@ const Login = () => {
         const form = new FormData(e.currentTarget)
         const email = form.get("email");
         const password = form.get("pass");
+        
 
         signIn(email, password)
             .then(result => {
@@ -44,6 +47,15 @@ const Login = () => {
                 setTimeout(function () {
                     navigate(location?.state ? location.state : "/")
                 }, 2000);
+                const url = '/jwt';
+                const loggedUser = {email: result.user?.email}
+                
+                axiosSecure.post(url,loggedUser,{withCredentials:true})
+                .then(res=>{
+                    
+                        console.log(res.data)
+                    
+                })
 
 
             })
@@ -67,6 +79,17 @@ const Login = () => {
                 console.log('Google Sign-In Successful:', user);
                 setUser(user);
                 successToast(`  You have successfully logged in `)
+
+                const url = '/jwt';
+                const loggedUser = {email: result.user?.email}
+                
+                axiosSecure.post(url,loggedUser,{withCredentials:true})
+                .then(res=>{
+                    
+                        console.log(res.data)
+                    
+                })
+
                 setTimeout(function () {
                     navigate(location?.state ? location.state : "/")
                 }, 2000);
@@ -80,7 +103,7 @@ const Login = () => {
 
 
     return (
-        <div className={`${isDarkMode ? "bg-black":"bg-blue-100"}`}>
+        <div className="bg-blue-100">
             <div className="max-w-xl mx-auto py-20 px-5">
                 <ToastContainer className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 " />
                 <div className="relative flex  flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg shadow-gray-200">

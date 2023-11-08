@@ -5,6 +5,8 @@ import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import CommentBox from "./CommentBox";
 import { Button } from "flowbite-react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Skeleton from "react-loading-skeleton";
+
 
 const BlogDetails = () => {
 
@@ -12,7 +14,10 @@ const BlogDetails = () => {
     const {user} = useContext(AuthContext);
     const [blog, setBlog] = useState([]);
     const axiosSecure = useAxiosSecure();
-    const url = `/blog/${id}`;
+ 
+    const userMail = user?.email;
+    console.log(userMail)
+    const url = `/blog/${id}?email=${userMail}`;
     const { isLoading, error } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
@@ -30,7 +35,7 @@ const BlogDetails = () => {
 
     if (isLoading) {
 
-        return 'Loading...'
+        return <div className="p-20"><Skeleton count={10}/></div>
     }
     if (error) return 'An error has occurred: ' + error.message;
 

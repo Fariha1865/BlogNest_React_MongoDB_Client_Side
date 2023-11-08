@@ -2,7 +2,7 @@ import { Rating } from 'flowbite-react';
 import PropTypes from 'prop-types';
 const TopWriter = ({ topWriter }) => {
 
-    const { userMail, frequency, percentage, userImage,userName } = topWriter;
+    const { frequency, percentage, userImage,userName } = topWriter;
     return (
         <div className='max-w-7xl mx-auto'>
             <div className='flex md:gap-20 mb-10 justify-center'>

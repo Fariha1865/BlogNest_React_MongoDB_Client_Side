@@ -12,6 +12,13 @@ const CommentBox = ({ blog }) => {
     const axiosSecure = useAxiosSecure();
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState(false);
+   
+
+    useEffect(() => {
+       
+        window.scrollTo(0, 0);
+       
+      }, []);
 
     const commentsUrl = `/getComments/${blog?._id}`
     useEffect(() => {
@@ -19,15 +26,9 @@ const CommentBox = ({ blog }) => {
             .then(data => {
                 setComments(data.data)
                 console.log(data.data)
+             
 
-                if (data.data.insertedId) {
-                    Swal.fire(
-                        'Comment Added!',
-                        'Your comment has been added successfully',
-                        'success',
-                    )
 
-                }
             })
     }, [newComment, axiosSecure, commentsUrl])
 
@@ -66,21 +67,21 @@ const CommentBox = ({ blog }) => {
         <div>
             {
                 user?.email !== blog?.userMail ? <div className="flex items-center">
-                    <div className="inputs-container md:w-96 mt-10 border-b-4 border-x-blue-900">
+                    <div className="inputs-container w-60 md:w-96 mt-10 border-b-4 border-x-blue-900">
                         <input className="inputs w-96 h-40" name="text" type="text" id="comment" placeholder="Add a Comment" />
                         <label className="label">Type Comment</label>
                         <div className="topline"></div>
                         <div className="underline"></div>
                     </div>
                     <Button className="mt-10 h-12 rounded-l-none" onClick={handleComment}>Publish Comment</Button>
-                </div> : <div/>
+                </div> : <div className="bg-blue-600 p-3 text-white font-bold"><h1>Can not comment on your own blog</h1></div>
               
              
             }
 
             <div className=" bg-blue-200 p-4 rounded-lg h-96 overflow-y-auto">
                 {
-                    comments?.map(comment => <Comment key={comment._id} commentEach={comment}></Comment>)
+                  comments?.length >0 ? comments?.map(comment => <Comment key={comment._id} commentEach={comment}></Comment>) : <div className="flex justify-center mt-32 font-bold "><h1>No Comments available for this blog yet </h1></div>
                 }
             </div>
         </div>

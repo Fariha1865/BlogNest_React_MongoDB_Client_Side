@@ -11,8 +11,11 @@ const EditBlogs = () => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
+ 
 
-    const url = `/blog/${id}`
+    const userMail = user?.email;
+    console.log(userMail)
+    const url = `/blog/${id}?email=${userMail}`;
     const { isLoading, error, data: blog } = useQuery({
         queryKey: ['blog'],
         queryFn: async () => {
@@ -73,11 +76,11 @@ const EditBlogs = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
-                            <input required name="title" type="text" defaultValue={blog.title} />
+                            <input required name="title" type="text" defaultValue={blog?.title} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="image">Image URL</label>
-                            <input required name="image" type="text" defaultValue={blog.image} />
+                            <input required name="image" type="text" defaultValue={blog?.image} />
                         </div>
                         <div className="w-full flex flex-col mb-3">
                             <label className="font-semibold text-gray-600 py-2">Category*</label>
@@ -94,14 +97,14 @@ const EditBlogs = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="category">Short Description</label>
-                            <input required name="short" type="text" defaultValue={blog.short} />
+                            <input required name="short" type="text" defaultValue={blog?.short} />
                         </div>
 
 
                     </div>
                     <div className="form-group">
                         <label htmlFor="textarea">Long Description</label>
-                        <textarea required rows="10" id="textarea2" name="long" className="mb-5" defaultValue={blog.long}></textarea>
+                        <textarea required rows="10" id="textarea2" name="long" className="mb-5" defaultValue={blog?.long}></textarea>
                     </div>
                     <div className="flex justify-center">
                         {/* <input type="submit" value="Submit" className="button"/> */}

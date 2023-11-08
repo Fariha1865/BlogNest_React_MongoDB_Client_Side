@@ -31,16 +31,16 @@ const AuthProvider = ({ children }) => {
             //   console.log(user)
             if(currentUser)     
             {
-                const url = '/jwt';
+                // const url = '/jwt';
                 
-                axiosSecure.post(url,loggedUser,{withCredentials:true})
-                .then(res=>{
+                // axiosSecure.post(url,loggedUser,{withCredentials:true})
+                // .then(res=>{
                     
-                        console.log(res.data)
+                //         console.log(res.data)
                     
-                })
+                // })
             }else{
-                const url = 'logout'
+                const url = '/logout'
                 axiosSecure.post(url,loggedUser,{withCredentials:true})
                 .then(res=>{
                     
