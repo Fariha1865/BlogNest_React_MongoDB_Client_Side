@@ -6,7 +6,7 @@ import app from "../../firebase.config";
 
 const auth = getAuth(app);
 const axiosSecure = axios.create({
-    baseURL: 'https://blog-server-ashen.vercel.app',
+    baseURL: 'http://localhost:5000',
     withCredentials: true
 });
 

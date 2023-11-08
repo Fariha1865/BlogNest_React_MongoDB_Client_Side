@@ -29,7 +29,8 @@ const AddBlogs = () => {
         const blog = { userMail, userName, userImage, title, image, category, short, long, dateTime };
         console.log(blog);
 
-        const url = '/blogs';
+        const userEmail = user?.email;
+        const url = `/blogs?email=${userEmail}`;
         axiosSecure.post(url, blog)
             .then(data => {
                 console.log(data.data)
